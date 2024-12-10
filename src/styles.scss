@@ -3,3 +3,37 @@
     margin: 0px;
     user-select: none;
 } 
+body{
+    background: url('./assets/images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+    max-width: 1440px;
+    margin:0% auto;
+}
+.animated-button {
+    background-color: #6936D3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 300ms ease-out;
+    &:focus{
+      outline: none;
+    }
+    &:active {
+      animation: smart-animate 300ms ease-out;
+    }
+  }
+  @keyframes smart-animate {
+    0% {
+      transform: scale(1);
+      color: #6936D3;
+    }
+    100% {
+      transform: scale(1.1);
+      color: #fff;
+    }
+  } 
