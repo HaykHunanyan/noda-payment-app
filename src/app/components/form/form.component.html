@@ -1,1 +1,66 @@
-<p>form works!</p>
+<div class="container">
+  <div class="form-container">
+    <h1 class="form-header">Welcome to Noda Payment Links</h1>
+    <div class="form-content">
+      <div class="text-section">
+        <p>Where we harness the power of AI to</p>
+        <p>revolutionize the way creating payment pages</p>
+        <div>
+          Our advanced platform combines the capabilities of <b>ChatGPT</b> for generating detailed text descriptions and <b>MidJourney</b> for selecting suitable images.
+        </div>
+        <div>
+          With our innovative solution, you can effortlessly design and customize branded order pages for every transaction, complete with the following features:
+        </div>
+        <div class="icon-wrapper">
+          <svg width="94" height="84" viewBox="0 0 94 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M81.2948 75.8342C78.0256 77.8588 74.8933 79.8847 71.2835 82.1116C73.2849 83.7058 75.408 83.6571 77.0445 82.8503C81.9541 80.4299 86.8624 77.8726 91.4928 74.9016C94.1487 73.2138 93.7121 70.4697 90.8899 69.0048C86.2085 66.4952 81.3925 64.2583 76.5753 61.8844C76.3 61.7449 75.9555 61.5362 75.7507 61.6028C74.9299 61.7321 74.1795 62.0676 73.3599 62.334C73.6403 63.0216 73.6493 63.9807 74.132 64.3277C75.7877 65.5762 77.5099 66.6197 79.1643 67.7312C80.0606 68.356 80.9557 68.8439 81.7227 70.2895C80.1476 70.3434 78.5047 70.4651 76.9297 70.5189C44.3202 70.2153 16.2418 48.924 6.70185 17.53C5.4996 13.4772 4.77625 9.36038 3.77888 5.241C3.42295 3.79916 2.99916 2.42518 2.64322 0.983332C2.30005 0.911636 1.95815 0.976952 1.61498 0.905256C1.21159 1.72352 0.466296 2.6071 0.543095 3.49833C0.639028 6.44479 0.73496 9.39125 1.24194 12.3415C6.17341 41.7061 29.5534 66.0363 59.6888 72.8245C65.4549 74.1112 71.417 74.3722 77.2458 75.043C78.4802 75.1915 79.6442 75.1338 80.8774 75.1453C81.0835 75.2157 81.2231 75.491 81.2948 75.8342Z" fill="#6936D3"/>
+          </svg> 
+        </div>
+      </div>
+
+      <div class="form-section">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <div class="form-group">
+            <label for="businessType"></label>
+            <select id="businessType" formControlName="businessType" required>
+              <option value="" disabled selected>Select your business type</option>
+              <option value="label1">Label 1</option>
+              <option value="label2">Label 2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="email"></label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="E-mail"
+              [class.error]="form.get('email')?.invalid && form.get('email')?.touched"
+            />
+            <div class="error-message" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+              Email is invalid
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber"></label>
+            <input
+              id="phoneNumber"
+              type="text"
+              formControlName="phoneNumber"
+              placeholder="Phone number"
+              [class.error]="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched"
+            />
+            <div class="error-message" *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
+              Phone number is invalid
+            </div>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" formControlName="hasNodaAccount" id="hasNodaAccount" />
+            <label for="hasNodaAccount">I have a Noda account</label>
+          </div>
+          <button type="submit" [disabled]="form.invalid">Start using Noda Payment Links</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
