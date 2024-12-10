@@ -1,0 +1,76 @@
+<div (mouseleave)="hideSubmenu()" class="container">
+<div class="navbar">
+  <div class="logo">
+    <span class="icon">
+      <img src="../../../assets/images/💜symbol+text.png" alt="Logo"/>
+    </span>
+    <div class="menu">
+      <span class="menu-item" (click)="toggleSubmenu()" (mouseover)="showSubmenu()">Products</span> 
+    </div>
+  </div>
+  <button class="cta_button" *ngIf="!isMobileView">Start using Noda</button>
+  <div class="hamburger" *ngIf="isMobileView" (click)="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<div class="mobile_menu" *ngIf="isMobileView && isMobileMenuVisible">
+  <div class="menu_item" *ngFor="let payIn of payIns">
+    <img
+      [src]="payIn.image"
+      [alt]="payIn.title"
+      class="menu_item_icon"
+    />
+    <h4 class="menu_item_title">{{ payIn.title }}</h4>
+  </div>
+  <div class="menu_item" *ngFor="let payOut of payOuts">
+    <img
+      [src]="payOut.image"
+      [alt]="payOut.title"
+      class="menu_item_icon"
+    />
+    <h4 class="menu_item_title">{{ payOut.title }}</h4>
+  </div>
+  <button class="cta_button">Start using Noda</button>
+</div>
+<section class="services" [ngStyle]="{opacity: isSubmenuVisible ? 1 : 0, transition: 'opacity 0.5s linear'}">
+  <div class="line"></div>
+  <div class="services__container">
+    <div class="services__section_pay_in">
+      <h3 class="services__title">Pay-ins</h3>
+      <hr class="services__divider" />
+      <div class="services__pay_in_items">
+        <div class="services__pay_in_item" *ngFor="let payIn of payIns">
+          <img
+            [src]="payIn.image"
+            [alt]="payIn.title"
+            class="services__pay_in_icon"
+          />
+          <h4 class="services__item_title" [style]="{width: payIn.id === 1 && '160px'}">{{ payIn.title }}</h4>
+          <p class="services__item_description">{{ payIn.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="services__section_pay_out">
+      <h3 class="services__title">Pay-outs</h3>
+      <hr class="services__divider" />
+      <div class="services__pay_out_items">
+
+        <div class="services__pay_out_item" [ngClass]="{ 'services__card_pay_out_item': payOut.id === 2 }" *ngFor="let payOut of payOuts">
+          <img
+            [src]="payOut.image"
+            [alt]="payOut.title"
+            class="services__pay_in_icon"
+          />
+          <div>
+            <h4 class="services__item_title" >{{ payOut.title }}</h4>
+            <p class="services__item_description">{{ payOut.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
